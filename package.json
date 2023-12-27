@@ -2,6 +2,10 @@
   "name": "lesson3",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "nodemon --watch src/**/*.ts --exec node_modules/.bin/ts-node src/app.ts",
+    "build": "tsc"
+  },
   "repository": "https://github.com/Tinkle7/node.git",
   "author": "Tinkle7 <tinkledash@gmail.com>",
   "license": "MIT",
@@ -11,5 +15,9 @@
     "express": "^4.18.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.2"
   }
 }

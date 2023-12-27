@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist", // Change this to your desired output directory
+      "target": "es6",
+      "module": "commonjs",
+      "esModuleInterop": true,
+      // Other options...
+    },
+    "include": [
+      "./src" // Adjust this to match your project's TypeScript files location
+    ]
+  }
+  

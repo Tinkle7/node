@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import fs from "fs";
 export const requestHandler = (request, response) => {
   const url = request.url;
   const method = request.method;

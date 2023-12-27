@@ -1,12 +1,14 @@
-import * as http from "http";
-import { requestHandler } from "./routes.ts";
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const http_1 = __importDefault(require("http"));
+const routes_1 = require("./routes");
 require("dotenv").config();
-
-const server = http.createServer(requestHandler);
-
+const server = http_1.default.createServer(routes_1.requestHandler);
 const PORT = process.env.SERVER_PORT;
-
+console.log("hi");
 // const server = http.createServer((request, response) => {
 //   const url = request.url;
 //   const method = request.method;
@@ -53,7 +55,6 @@ const PORT = process.env.SERVER_PORT;
 //   response.write("</html>");
 //   response.end();
 // });
-
 server.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}/`);
+    console.log(`Server running at http://localhost:${PORT}/`);
 });
