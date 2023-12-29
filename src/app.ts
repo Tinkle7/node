@@ -1,8 +1,9 @@
 import bodyParser from "body-parser";
 import express from "express";
+import path from "path";
 
 import { adminRoutes, shopRoutes } from "./routes";
-import path from "path";
+
 
 require("dotenv").config();
 
@@ -16,9 +17,7 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res
-    .status(404)
-    .sendFile(path.join(__dirname, "views", "page-not-found.html"));
+  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
 });
 
 app.listen(PORT);
