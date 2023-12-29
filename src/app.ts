@@ -2,8 +2,9 @@ import bodyParser from "body-parser";
 import express from "express";
 import path from "path";
 
-import { adminRoutes, shopRoutes } from "./routes";
+import rootDir from "./util/path";
 
+import { adminRoutes, shopRoutes } from "./routes";
 
 require("dotenv").config();
 
@@ -17,7 +18,7 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  res.status(404).sendFile(path.join(rootDir, "views", "404.html"));
 });
 
 app.listen(PORT);
