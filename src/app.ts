@@ -10,7 +10,7 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("/add-product", (req, res, next) => {
+app.get("/add-product", (req, res, next) => {
   res.send(
     `<form action="/product" method="POST">
        <input type="text" name="title">
@@ -19,7 +19,7 @@ app.use("/add-product", (req, res, next) => {
   );
 });
 
-app.use("/product", (req, res, next) => {
+app.post("/product", (req, res, next) => {
   const title = req.body.title;
   console.log("Received title:", title);
   res.redirect("/");
