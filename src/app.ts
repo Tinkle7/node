@@ -13,6 +13,7 @@ const PORT = process.env.SERVER_PORT || 3000;
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static(path.join(rootDir, "..", "public")));
 
 app.use("/admin", adminRoutes);
 app.use(shopRoutes);
