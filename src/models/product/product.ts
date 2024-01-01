@@ -2,6 +2,20 @@ import fs from "fs";
 import path from "path";
 import mainModuleDirname from "../../util/path";
 
+const p = path.join(mainModuleDirname, "../", "data", "products.json");
+
+const getProductsFromFile = (callback) => {
+  fs.readFile(p, (err, data) => {
+    if (err) {
+      callback([]);
+      return;
+    }
+    const dataString = data.toString();
+    const products = JSON.parse(dataString);
+    callback(products);
+  });
+};
+
 //in class way
 export class Product {
   constructor(public title: string) {
@@ -9,13 +23,7 @@ export class Product {
   }
 
   save() {
-    const p = path.join(mainModuleDirname, "../", "data", "products.json");
-    fs.readFile(p, (err, data) => {
-      let products = [];
-      if (!err) {
-        const dataString = data.toString();
-        products = JSON.parse(dataString);
-      }
+    getProductsFromFile((products) => {
       products.push(this);
       fs.writeFile(p, JSON.stringify(products), (err) => {
         if (err) console.log(err);
@@ -24,16 +32,7 @@ export class Product {
   }
 
   static fetchAll(callback) {
-    const p = path.join(mainModuleDirname, "../", "data", "products.json");
-    fs.readFile(p, (err, data) => {
-      if (err) {
-        callback([]);
-        return;
-      }
-      const dataString = data.toString();
-      const products = JSON.parse(dataString);
-      callback(products);
-    });
+    getProductsFromFile(callback);
   }
 }
 
