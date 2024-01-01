@@ -12,9 +12,11 @@ const handlePostAddProduct = (req, res, next) => {
 };
 
 const handleGetProduct = (req, res, next) => {
-  res.render("shop", {
-    prods: ProductModel.Product.fetchAll(),
-    docTitle: "My Shop",
+  ProductModel.Product.fetchAll((products) => {
+    res.render("shop", {
+      prods: products,
+      docTitle: "My Shop",
+    });
   });
 };
 
