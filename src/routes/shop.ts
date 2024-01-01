@@ -1,13 +1,9 @@
 import express from "express";
-import path from "path";
 
-import rootDir from "../util/path";
-import { adminRoutes } from ".";
+import productController from "../controllers/products";
 
 const router = express.Router();
 
-router.get("/", (req, res, next) => {
-  res.render("shop", { prods: adminRoutes.products, docTitle: "My Shop" });
-});
+router.get("/", productController.handleGetProduct);
 
 export default { router };

@@ -5,6 +5,7 @@ import path from "path";
 import rootDir from "./util/path";
 
 import { adminRoutes, shopRoutes } from "./routes";
+import error from "./controllers/error";
 
 require("dotenv").config();
 
@@ -21,8 +22,6 @@ app.use(express.static(path.join(rootDir, "..", "public")));
 app.use("/admin", adminRoutes.router);
 app.use(shopRoutes.router);
 
-app.use((req, res, next) => {
-  res.status(404).render("404");
-});
+app.use(error.handle404);
 
 app.listen(PORT);
